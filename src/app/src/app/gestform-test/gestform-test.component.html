@@ -1,8 +1,11 @@
-<p>gestform-test works!</p>
-
 <div>
-  <h3>Interprétation stricte (pas de limite de taille de liste des nombres générés)</h3>
+  <p>Soit une liste aléatoire de nombres entiers, compris entre -1000 et 1000. Pour chaque nombre n de liste, on veut effectuer les opérations suivantes :</p>
   <ul>
-    <li *ngFor="let result of results">{{ result }}</li>
+    <li>si le nombre est divisible par 3 : on affiche Geste</li>
+    <li>si le nombre est divisible par 5 : on affiche Forme</li>
+    <li>si le nombre est divisible par 3 et par 5 : on affiche Gestform (d’où le nom du test)</li>
+    <li>sinon : on affiche le nombre n</li>
   </ul>
+  <h3>Résultat actuel</h3>
+  <p>{{ currentResult }}</p>
 </div>
