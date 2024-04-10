@@ -8,4 +8,6 @@
   </ul>
   <h3>Résultat actuel</h3>
   <p>{{ currentResult }}</p>
+  <button class = "btn btn-primary" (click)="startGeneratingNumbers()" [disabled]="numberGenerationSubscription !== null">Start</button>
+  <button class = "btn btn-danger" (click)="stopGeneratingNumbers()" [disabled]="numberGenerationSubscription === null">Stop</button>
 </div>

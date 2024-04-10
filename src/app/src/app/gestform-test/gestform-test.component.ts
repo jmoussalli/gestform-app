@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Observable, interval} from 'rxjs';
+import {Observable, interval, Subscription} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 @Component({
@@ -11,11 +11,25 @@ import {map} from 'rxjs/operators';
 export class GestformTestComponent implements OnInit {
   currentNumber?: number;
   currentResult?: string;
+  numberGenerationSubscription: Subscription | null = null;
 
   ngOnInit(): void {
-    this.generateNumbersContinuously().subscribe((result: string) => {
-      this.currentResult = result;
-    });
+    // Initialisation sans démarrage automatique de la génération
+  }
+
+  startGeneratingNumbers(): void {
+    if (!this.numberGenerationSubscription) {
+      this.numberGenerationSubscription = this.generateNumbersContinuously().subscribe((result: string) => {
+        this.currentResult = result;
+      });
+    }
+  }
+
+  stopGeneratingNumbers(): void {
+    if (this.numberGenerationSubscription) {
+      this.numberGenerationSubscription.unsubscribe();
+      this.numberGenerationSubscription = null;
+    }
   }
 
   generateNumbersContinuously(): Observable<string> {
