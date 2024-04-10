@@ -1,0 +1,7 @@
+:root {
+  --inter-font: 'Inter', sans-serif;
+}
+
+body {
+  font-family: var(--inter-font);
+}
